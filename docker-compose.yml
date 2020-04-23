@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  app:
+    build: .
+    image: hockeystick-image-convert-api
+    ports:
+      # Service will be accessible on the host at port 9090.
+      - '80:${PORT:-80}'
+    environment:
+      # /run/docs/reference/container-contract
+      PORT: ${PORT:-80}
+      K_SERVICE: hockeystick-image-convert-api
+      K_REVISION: 0
+      K_CONFIGURATION: hockeystick-image-convert-api

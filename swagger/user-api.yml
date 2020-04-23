@@ -1,0 +1,231 @@
+paths:
+  /user-api/user/:
+    get:
+      description: Get the user by phone number
+      summary: Returns user object by phone number
+      tags:
+        - User
+      responses:
+        '200':
+          description: Returns user object by phone number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWithAddressResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      description: Create a user as driver and/or parent
+      summary: Returns user object
+      tags:
+        - User
+      requestBody:
+        description: User body with address
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserWithAddressBody'
+      responses:
+        '200':
+          description: Returns user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      description: Update a user as driver and/or parent
+      summary: Returns number of user updated
+      tags:
+        - User
+      requestBody:
+        description: User body with address
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserWithAddressBody'
+      responses:
+        '200':
+          description: Returns number of user object updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRecordsResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      description: Delete the user by phone number
+      summary: Returns number of user deleted by phone number
+      tags:
+        - User
+      responses:
+        '200':
+          description: Returns number of user object deleted by phone number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteRecordsResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/user-type/:
+    get:
+      description: Get the user-type by phone number
+      summary: Returns user-type object by phone number
+      tags:
+        - User Type
+      responses:
+        '200':
+          description: Returns user-type object by phone number
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTypeWithUserWithAddressResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/user-type/add-role/:
+    patch:
+      description: Add a new role to the user
+      summary: Returns true indicating the role has been added to the user
+      tags:
+        - User Type
+      requestBody:
+        description: User with role
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAddRole'
+      responses:
+        '200':
+          description: Returns true indicating the role has been added to the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRecordsResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/childs/:
+    get:
+      description: Get all the childs by phone number
+      summary: Returns an array of child object by phone number
+      tags:
+        - Child
+      responses:
+        '200':
+          description: Returns an array of child object by phone number
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChildResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /user-api/child/:
+    post:
+      description: Create a child for a parent
+      summary: Returns newly created child
+      tags:
+        - Child
+      requestBody:
+        description: Child body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateChildBody'
+      responses:
+        '200':
+          description: Returns newly created child
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChildResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      description: Update a child for a parent
+      summary: Returns number of child updated
+      tags:
+        - Child
+      requestBody:
+        description: Child body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateChildBody'
+      responses:
+        '200':
+          description: Returns number of child udpated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateRecordsResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  '/user-api/child/{id}':
+    delete:
+      description: Delete a child by id
+      summary: Returns number of child deleted
+      tags:
+        - Child
+      parameters:
+        - name: id
+          description: Child id
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Returns number of child deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteRecordsResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

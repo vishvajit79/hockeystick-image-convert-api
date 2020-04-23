@@ -1,0 +1,65 @@
+components:
+  schemas:
+    PickupDropoffResponse:
+      required:
+        - 'id'
+        - 'driverId'
+        - 'tripId'
+        - 'childId'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        id:
+          type: 'number'
+        driverId:
+          type: 'number'
+        tripId:
+          type: 'number'
+        childId:
+          type: 'number'
+        pickupTime:
+          type: 'string'
+        dropoffTime:
+          type: 'string'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    PickupDropoffWithTripAndChildAndDriverResponse:
+      required:
+        - 'id'
+        - 'driverId'
+        - 'tripId'
+        - 'childId'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        id:
+          type: 'number'
+        driverId:
+          type: 'number'
+        tripId:
+          type: 'number'
+        childId:
+          type: 'number'
+        pickupTime:
+          type: 'string'
+        dropoffTime:
+          type: 'string'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    CreatePickupDropoffBody:
+      required:
+        - 'tripId'
+        - 'childIds'
+      properties:
+        tripId:
+          type: 'number'
+        childIds:
+          type: 'array'
+          items:
+            type: 'number'

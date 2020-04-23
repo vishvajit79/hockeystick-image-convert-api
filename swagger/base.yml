@@ -1,0 +1,26 @@
+tags:
+  - name: 'User'
+    description: 'Everything about your User class'
+  - name: 'User Type'
+    description: 'Everything about your UserType class'
+  - name: 'Child'
+    description: 'Everything about your Child class'
+  - name: 'Device'
+    description: 'Everything about your Device class'
+  - name: 'DriverGroup'
+    description: 'Everything about your DriverGroup class'
+  - name: 'Trip'
+    description: 'Everything about your Trip class'
+  - name: 'PickupDropoff'
+    description: 'Everything about your PickupDropoff class'
+  - name: 'Group'
+    description: 'Everything about your Group class'
+  - name: 'ChildGroup'
+    description: 'Everything about your ChildGroup class'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

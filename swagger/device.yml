@@ -1,0 +1,59 @@
+components:
+  schemas:
+    DeviceResponse:
+      required:
+        - 'id'
+        - 'uId'
+        - 'userId'
+      properties:
+        id:
+          type: 'number'
+        uId:
+          type: 'string'
+        model:
+          type: 'string'
+        make:
+          type: 'string'
+        userId:
+          type: 'number'
+        user:
+          $ref: '#/components/schemas/UserResponse'
+        updatedAt:
+          type: 'string'
+        createdAt:
+          type: 'string'
+
+    DeviceWithUserResponse:
+      required:
+        - 'id'
+        - 'uId'
+        - 'userId'
+        - 'user'
+      properties:
+        id:
+          type: 'number'
+        uId:
+          type: 'string'
+        model:
+          type: 'string'
+        make:
+          type: 'string'
+        userId:
+          type: 'number'
+        user:
+          $ref: '#/components/schemas/UserResponse'
+        updatedAt:
+          type: 'string'
+        createdAt:
+          type: 'string'
+
+    CreateDeviceBody:
+      required:
+        - 'uId'
+      properties:
+        uId:
+          type: 'string'
+        model:
+          type: 'string'
+        make:
+          type: 'string'

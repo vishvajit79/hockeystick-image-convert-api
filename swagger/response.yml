@@ -1,0 +1,15 @@
+components:
+  schemas:
+    UpdateRecordsResponse:
+      required:
+        - 'updated'
+      properties:
+        updated:
+          type: 'number'
+
+    DeleteRecordsResponse:
+      required:
+        - 'deleted'
+      properties:
+        deleted:
+          type: 'number'

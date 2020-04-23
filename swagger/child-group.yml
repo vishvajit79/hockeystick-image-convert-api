@@ -1,0 +1,52 @@
+components:
+  schemas:
+    ChildGroupResponse:
+      required:
+        - 'childId'
+        - 'groupId'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        childId:
+          type: 'number'
+        groupId:
+          type: 'number'
+        child:
+          $ref: '#/components/schemas/ChildResponse'
+        group:
+          $ref: '#/components/schemas/GroupResponse'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    ChildGroupWithChildWithGroupResponse:
+      required:
+        - 'childId'
+        - 'groupId'
+        - 'child'
+        - 'group'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        childId:
+          type: 'number'
+        groupId:
+          type: 'number'
+        child:
+          $ref: '#/components/schemas/ChildResponse'
+        group:
+          $ref: '#/components/schemas/GroupResponse'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    ChildGroupChildIdsBody:
+      required:
+        - 'childIds'
+      properties:
+        childIds:
+          type: array
+          items:
+            type: number

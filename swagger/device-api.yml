@@ -1,0 +1,53 @@
+paths:
+  '/device-api/device/uId/{uId}/':
+    get:
+      description: Get a device for a user by uId
+      summary: Returns device object
+      tags:
+        - Device
+      parameters:
+        - name: uId
+          description: Device uId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get a device for a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceWithUserResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /device-api/device/:
+    post:
+      description: Create a device for a user
+      summary: Returns device object
+      tags:
+        - Device
+      requestBody:
+        description: Device body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeviceBody'
+      responses:
+        '200':
+          description: Returns device object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceResponse'
+        default:
+          description: Error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'

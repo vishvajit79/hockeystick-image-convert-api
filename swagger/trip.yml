@@ -1,0 +1,81 @@
+components:
+  schemas:
+    TripResponse:
+      required:
+        - 'id'
+        - 'driverId'
+        - 'groupId'
+        - 'deviceId'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        id:
+          type: 'number'
+        driverId:
+          type: 'number'
+        groupId:
+          type: 'number'
+        deviceId:
+          type: 'number'
+        startTime:
+          type: 'string'
+        endTime:
+          type: 'string'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    TripWithGroupAndDeviceAndUserResponse:
+      required:
+        - 'id'
+        - 'driverId'
+        - 'groupId'
+        - 'deviceId'
+        - 'driver'
+        - 'device'
+        - 'group'
+        - 'createdAt'
+        - 'updatedAt'
+      properties:
+        id:
+          type: 'number'
+        driverId:
+          type: 'number'
+        groupId:
+          type: 'number'
+        deviceId:
+          type: 'number'
+        startTime:
+          type: 'string'
+        endTime:
+          type: 'string'
+        childId:
+          type: 'number'
+        driver:
+          $ref: '#/components/schemas/UserResponse'
+        group:
+          $ref: '#/components/schemas/GroupResponse'
+        device:
+          $ref: '#/components/schemas/DeviceResponse'
+        createdAt:
+          type: 'string'
+        updatedAt:
+          type: 'string'
+
+    StartTripBody:
+      required:
+        - 'groupId'
+        - 'uId'
+      properties:
+        groupId:
+          type: 'number'
+        uId:
+          type: 'string'
+
+    EndTripBody:
+      required:
+        - 'id'
+      properties:
+        id:
+          type: 'number'

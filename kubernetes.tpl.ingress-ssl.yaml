@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: _APP_NAME_-_CI_ENVIRONMENT_SLUG_-ingress
+  annotations:
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - hosts:
+        - _CI_ENVIRONMENT_SLUG_._APP_NAME_._MY_DOMAIN_
+      secretName: tls-_APP_NAME_-_CI_ENVIRONMENT_SLUG_
+  rules:
+    - host: _CI_ENVIRONMENT_SLUG_._APP_NAME_._MY_DOMAIN_
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: _APP_NAME_-_CI_ENVIRONMENT_SLUG_-svc
+              servicePort: 80
