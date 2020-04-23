@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import { appContainer } from '../inversify.config';
+import { upload } from '../multer';
 import { InterfaceRequestValidationMiddleware } from '../plugins/request-validation.interface';
 import { HealthController } from '../server/controllers/health.controller';
 import { ImageController } from '../server/controllers/image.controller';
@@ -33,12 +34,13 @@ routes.get('/health', healthController.getHealth.bind(healthController));
 
 routes.get('/api', swaggerController.getDocs.bind(swaggerController));
 
-routes.use(
+routes.post(
   '/image/convert',
   [
-    validationMiddleware('body', ImageConvert, {
+    validationMiddleware('params', ImageConvert, {
       validator: { groups: ['convertImage'] },
     }),
+    upload.single('file'),
   ],
   imageController.convert.bind(imageController)
 );

@@ -1,5 +1,4 @@
 import { Request } from 'express';
-import * as admin from 'firebase-admin';
 
 export interface RequestWithBody<T> extends Request {
   /**
@@ -16,15 +15,6 @@ export interface RequestWithParams<T> extends Request {
    * path params copied to it
    */
   validatedParams: T;
-}
-
-export interface RequestWithToken extends Request {
-  /**
-   * A request that uses the FirebaseTokenMiddleware will have this
-   * property set to a class-based object of the validated type with
-   * token copied to it
-   */
-  validatedToken: admin.auth.DecodedIdToken;
 }
 
 export interface RequestWithPhoneNumber extends Request {
